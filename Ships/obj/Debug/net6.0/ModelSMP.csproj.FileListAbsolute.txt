@@ -1,0 +1,15 @@
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.csproj.AssemblyReference.cache
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.AssemblyInfoInputs.cache
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.AssemblyInfo.cs
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.csproj.CoreCompileInputs.cache
+C:\Users\wwwww\source\repos\Ships\Ships\bin\Debug\net6.0\ModelSMP.exe
+C:\Users\wwwww\source\repos\Ships\Ships\bin\Debug\net6.0\ModelSMP.deps.json
+C:\Users\wwwww\source\repos\Ships\Ships\bin\Debug\net6.0\ModelSMP.runtimeconfig.json
+C:\Users\wwwww\source\repos\Ships\Ships\bin\Debug\net6.0\ModelSMP.dll
+C:\Users\wwwww\source\repos\Ships\Ships\bin\Debug\net6.0\ModelSMP.pdb
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.dll
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\refint\ModelSMP.dll
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.pdb
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ModelSMP.genruntimeconfig.cache
+C:\Users\wwwww\source\repos\Ships\Ships\obj\Debug\net6.0\ref\ModelSMP.dll
