@@ -7,9 +7,7 @@ namespace ModelSMP.Cargos
     class Cargo
     {
         private Point? m_crds;
-        private bool b_isContract;
 
-        public bool IsContract { get { return b_isContract; } }
         public Point Coords { get { return m_crds; } }
 
         public void ConnectToShip(Ship ship)
@@ -17,7 +15,7 @@ namespace ModelSMP.Cargos
 
         }
 
-        public Cargo(Nodes.Node nodeToSpawn)
+        public Cargo(NodeLogicHandler.Node nodeToSpawn)
         {
             m_crds = nodeToSpawn.GetCoords;
         }
@@ -30,13 +28,13 @@ namespace ModelSMP.Cargos
 
     class CargoContainer : Cargo
     {
-        public CargoContainer(Nodes.Node node) : base(node) { }
+        public CargoContainer(NodeLogicHandler.Node node) : base(node) { }
         public CargoContainer(Point point) : base(point) { }
     }
 
     class CargoTanker : Cargo
     {
-        public CargoTanker(Nodes.Node node) : base(node) { }
+        public CargoTanker(NodeLogicHandler.Node node) : base(node) { }
         public CargoTanker(Point point) : base(point) { }
     }
 

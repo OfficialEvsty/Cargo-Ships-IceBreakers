@@ -1,4 +1,4 @@
-﻿using ModelSMP.Edges;
+﻿
 using ModelSMP.PatternObserver.Observer;
 
 namespace ModelSMP.PatternObserver
@@ -18,7 +18,9 @@ namespace ModelSMP.PatternObserver
         }
         public static void NotifyObservers<Event>(Event ev) where Event : class
         {
-            var subscribers = m_subscribers[typeof(Event)];
+            List<IEventObservableBase> subscribers = new List<IEventObservableBase>();
+            if (m_subscribers.ContainsKey(typeof(Event)))
+                subscribers = m_subscribers[typeof(Event)];
             foreach (var subscriber in subscribers)
             {
                 ((IEventObserver<Event>)subscriber).Update(ev);

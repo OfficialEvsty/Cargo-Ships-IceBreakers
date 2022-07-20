@@ -7,7 +7,7 @@ namespace ModelSMP.TimerSMP
     {
         private DispatcherTimer m_timer;
 
-        public int i_multipleTimer = GeneralSettings.Settings.MultipleTimer;
+        public int i_multipleTimer = GeneralSettings.Settings.MultiplyTimer;
         public int Tick = GeneralSettings.Settings.TimerTickInMS;
 
         private int i_seconds;
@@ -79,14 +79,14 @@ namespace ModelSMP.TimerSMP
             int sec = Tick * i_multipleTimer / msInSec;
             int minutes = 0;
 
-            if(Seconds + sec > 59)
+            if(Seconds + sec >= secInMinute)
             {
                 Seconds = (Seconds + sec) % secInMinute;
                 minutes = (Seconds + sec) / secInMinute;
             }
             else Seconds += sec;
 
-            if (Minutes + minutes > 59)
+            if (Minutes + minutes >= minuteInHour)
             {
                 if (Hours + (Minutes + minutes) / minuteInHour > 23)
                     Hours = 0;

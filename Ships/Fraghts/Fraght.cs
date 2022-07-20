@@ -1,7 +1,7 @@
 ﻿
 
 using ModelSMP.Cargos;
-using ModelSMP.Nodes;
+using ModelSMP.NodeLogicHandler;
 using ModelSMP.Ships;
 
 namespace ModelSMP.Fraghts

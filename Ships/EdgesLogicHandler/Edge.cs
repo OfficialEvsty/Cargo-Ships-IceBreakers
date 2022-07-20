@@ -1,7 +1,7 @@
-﻿using ModelSMP.Nodes;
+﻿using ModelSMP.NodeLogicHandler;
 using ModelSMP.PatternObserver;
 
-namespace ModelSMP.Edges
+namespace ModelSMP.EdgesLogicHandler
 {
     interface IEdgeFactory
     {
@@ -14,7 +14,6 @@ namespace ModelSMP.Edges
 
     class Edge
     {
-
         public float Distance 
         { 
             get
@@ -24,34 +23,50 @@ namespace ModelSMP.Edges
                 return 0;
             } 
         }
-        public Node FirstNode { get; init; }
-        public Node LastNode { get; init; }
-        public Edge(Node n1, Node n2)
+        public GeneralNode? FirstNode { get; init; }
+        public GeneralNode? LastNode { get; init; }        
+
+        public List<EdgeSection>? EdgeSections { get; private set; }
+
+        protected Edge(GeneralNode n1, GeneralNode n2)
+        {
+            FirstNode = n1;
+            LastNode = n2;
+            EventObservable.NotifyObservers(this);
+        }
+        
+
+        public void ShowRoutes()
+        {
+            int i = 0;
+            if (EdgeSections == null)
+                return;
+            foreach(EdgeSection edgeSection in EdgeSections)
+            {
+                Console.WriteLine($"{++i}-ый путь в {this} протяженностью {edgeSection.Distance}. Общий путь {this.Distance}");
+            }
+        }
+    }
+
+    class Pipeline : Edge
+    {
+        public Pipeline(Node n1, Node n2) : base(n1, n2)
+        { 
+            FirstNode = n1;
+            LastNode = n2;
+        }
+    }
+
+    class Railway : Edge
+    {
+        public Railway(Node n1, Node n2) : base (n1, n2)
         {
             FirstNode = n1;
             LastNode = n2;
         }
     }
 
-    class Pipeline : Edge
-    {
-        public Pipeline(Node n1, Node n2) : base(n1, n2) { }
-    }
 
-    class Railway : Edge
-    {
-        public Railway(Node n1, Node n2) : base(n1, n2) { }
-    }
-
-    class SeaRoute : Edge
-    {
-        
-        public SeaRoute(Node n1, Node n2) : base(n1, n2) 
-        {
-            EventObservable.NotifyObservers(this);
-        }
-        public int IceLevel { get; private set; }
-    }
 
     class EdgeFactory : IEdgeFactory
     {
