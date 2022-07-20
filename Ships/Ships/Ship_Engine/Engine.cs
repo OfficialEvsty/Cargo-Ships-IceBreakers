@@ -1,4 +1,6 @@
 ﻿
+using ModelSMP.TimerSMP;
+
 namespace ModelSMP.Ship_Engine
 {
     class Engine
@@ -20,13 +22,25 @@ namespace ModelSMP.Ship_Engine
         public float Running()
         {
             if(IsStartEngine)
-                return f_currentSpeed;
+                return f_currentSpeed * GeneralSettings.Settings.TimerTickInSeconds * GeneralSettings.Settings.MultiplyTimer / 3600;
             return 0;
+        }
+
+        public void StartEngine()
+        {
+            IsStartEngine = true;
+        }
+
+        public void StopEngine()
+        {
+            IsStartEngine = false;
         }
 
         public void SwitchSpeedInCaravan()
         {
             f_currentSpeed = CaravanSpeedInKM;
         }
+
+
     }
 }

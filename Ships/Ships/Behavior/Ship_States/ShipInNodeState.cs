@@ -17,6 +17,12 @@ namespace ModelSMP.Ships.Behavior.Ship_States
         {
             Console.WriteLine("Корабль успешно поменял свое состояние на " + sb.State);
             //временно
+            if (sb.GetFraghtInfo() != null && sb.Navigation.ToNode == sb.Navigation.CurrentNode)
+            {
+                Console.WriteLine("Груз доставлен!!!");
+                sb.BoardCargo.Unloading();
+            }
+                
             sb.GoNextState();
         }
 

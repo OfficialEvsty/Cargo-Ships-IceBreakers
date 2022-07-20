@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ModelSMP.Ships.Behavior.Ship_States
 {
@@ -16,7 +12,9 @@ namespace ModelSMP.Ships.Behavior.Ship_States
         public override void OnEntry(ShipBehavior sb)
         {
             Console.WriteLine("Корабль успешно поменял свое состояние на " + sb.State);
-
+            if(sb.Navigation.CurrentNode != null)
+                sb.Navigation.CurrentNode.ShipTryEnterInNode(sb.Ship);
+            Console.WriteLine($"Текущий нод корабля {sb.Navigation.CurrentNode}");
         }
 
         public override void OnExit(ShipBehavior sb)

@@ -1,12 +1,12 @@
 ﻿using ModelSMP.Cargos;
 using ModelSMP.Fraghts;
-using ModelSMP.Nodes;
+using ModelSMP.NodeLogicHandler;
 
 namespace ModelSMP.Ship_Cargo_Compartment
 {
     interface ICarryCargo
     {
-        bool Loading();
+        void Loading(Dictionary<Cargo, int> cargoToLoad);
         void Unloading();
     }
 
@@ -27,14 +27,21 @@ namespace ModelSMP.Ship_Cargo_Compartment
         public bool IsCargoContracted { get; private set; }
         public float DeadWeight;
         public bool IsLoaded { get { return m_loadedCargo.Count > 0; } }
-        public bool Loading()
+        public void Loading(Dictionary<Cargo, int> cargoToLoad)
         {
-            throw new NotImplementedException();
+            foreach(Cargo key in cargoToLoad.Keys)
+            {
+                if (m_loadedCargo.ContainsKey(key))
+                    m_loadedCargo[key] += cargoToLoad[key];
+                else
+                    m_loadedCargo.Add(key, cargoToLoad[key]);
+            }
         }
 
         public void Unloading()
         {
-            throw new NotImplementedException();
+            m_loadedCargo.Clear();
+            
         }
 
         public void ContractCargo()

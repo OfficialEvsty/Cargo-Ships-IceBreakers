@@ -14,8 +14,8 @@ namespace ModelSMP.Ships.Behavior.Ship_States
         public override void OnExit(ShipBehavior sb)
         {
             Console.WriteLine("Корабль успешно вышел из состояния" + sb.State);
-            if(sb.Navigation.FromNode != null && sb.BoardCargo.Fraght != null)
-                
+            if (sb.Navigation.FromNode != null && sb.GetFraghtInfo() != null)
+                sb.GetFraghtInfo()?.FromNode.LoadingSection.ContractAvailableCargo(sb.GetFraghtInfo());                                
         }
 
         public override State NextState()

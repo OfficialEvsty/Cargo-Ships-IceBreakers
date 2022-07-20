@@ -2,7 +2,7 @@
 
 using ModelSMP.Fraghts;
 using ModelSMP.Navigation_System;
-using ModelSMP.Nodes;
+using ModelSMP.NodeLogicHandler;
 using ModelSMP.Ship_Cargo_Compartment;
 using ModelSMP.Ship_Engine;
 using ModelSMP.Ships.Behavior.Ship_States;
@@ -18,9 +18,12 @@ namespace ModelSMP.Ships.Behavior
         private Engine m_engine;
         private Navigation m_navigationModule;
         private BoardCargo m_boardCargo;
+
+        public Ship Ship { get { return m_ship; } }
         public State State { get; set; }
         public BoardCargo BoardCargo { get { return m_boardCargo; } }
         public Navigation Navigation { get { return m_navigationModule; } } 
+        public Engine Engine { get { return m_engine; } }
         public ShipBehavior(Ship ownShip, Engine eng, Navigation nav, BoardCargo bg)
         {
             m_ship = ownShip;

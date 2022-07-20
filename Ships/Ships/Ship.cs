@@ -3,8 +3,9 @@ using ModelSMP.Navigation_System;
 using ModelSMP.Ship_Cargo_Compartment;
 using ModelSMP.Ship_Engine;
 using ModelSMP.Ships.Behavior;
-using ModelSMP.Nodes;
+using ModelSMP.NodeLogicHandler;
 using ModelSMP.Fraghts;
+using ModelSMP.EdgesLogicHandler;
 
 namespace ModelSMP.Ships
 {
@@ -31,7 +32,7 @@ namespace ModelSMP.Ships
         }
         public ShipBehavior Behavior { get { return m_shipBehavior; } }
 
-        public Ship(Node nodeToSpawnShip)
+        public Ship(Node nodeToSpawnShip, EdgeSystem? edgeSystem = null)
         {
             TimerData.PropertyChanged += Update;
             m_navigationModule = new Navigation();
@@ -41,30 +42,13 @@ namespace ModelSMP.Ships
             nodeToSpawnShip.ShipTryEnterInNode(this);
         }
 
-
-        public void StartEngine()
-        {
-            m_engine.IsStartEngine = true;
-            Console.WriteLine("The Engine is start.");
-        }
-
-        public void StopEngine()
-        {
-
-            m_engine.IsStartEngine = false;
-            Console.WriteLine("The Engine is stop.");
-        }
-
-
-
         public void Update()
         {
             if(m_navigationModule != null && m_engine != null)
             {
-                m_navigationModule.DistanceTraveledOnEdge += m_engine.Running() * GeneralSettings.Settings.TimerTickInSeconds * GeneralSettings.Settings.MultipleTimer / 3600;
-                Console.WriteLine(m_navigationModule.DistanceTraveledOnEdge);
-            }
-            
+                m_navigationModule.ObserveMoving(m_engine.Running());
+                Console.WriteLine(m_navigationModule.DistanceTraveledOnCurrentTile);
+            } 
         }
 
     }
